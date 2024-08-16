@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const slotValues = ['A', 'B', 'C', 'D', 'E'];
+    const slotValues = ['1', '2', '3', '4', '5'];
 
     const slotElements = [
         document.getElementById('slot1'),
