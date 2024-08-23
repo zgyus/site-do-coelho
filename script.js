@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const slotValues = ['1', '2', '3', '4', '5'];
-
     const slotElements = [
         document.getElementById('slot1'),
         document.getElementById('slot2'),
@@ -11,18 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const messageElement = document.getElementById('message');
 
     spinButton.addEventListener('click', () => {
-        // Gira os slots
-        const selectedValues = slotValues.map(() => {
-            const randomIndex = Math.floor(Math.random() * slotValues.length);
-            return slotValues[randomIndex];
+        // Define uma rotação aleatória para cada slot
+        slotElements.forEach((slot) => {
+            const randomRotation = Math.floor(Math.random() * 360); // Rotação aleatória entre 0 e 360 graus
+            slot.style.transform = `rotate(${randomRotation}deg)`;
         });
 
-        slotElements.forEach((slot, index) => {
-            slot.textContent = selectedValues[index];
-        });
-
-        // Verifica se todos são iguais
-        if (selectedValues.every(value => value === selectedValues[0])) {
+        // Verifica se todos os slots têm a mesma rotação
+        const rotations = slotElements.map(slot => slot.style.transform);
+        if (rotations.every(rotation => rotation === rotations[0])) {
             messageElement.textContent = 'Parabéns! Você ganhou!';
         } else {
             messageElement.textContent = '';
